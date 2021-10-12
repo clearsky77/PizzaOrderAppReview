@@ -7,6 +7,9 @@ import com.clearsky77.pizzaorderappreview.fragments.MyProfileFragment
 import com.clearsky77.pizzaorderappreview.fragments.PizzaStoreListFragment
 
 class MainViewPagerAdapter(fm : FragmentManager) : FragmentPagerAdapter(fm) {
+
+
+
     override fun getCount(): Int {
         return 2
     }

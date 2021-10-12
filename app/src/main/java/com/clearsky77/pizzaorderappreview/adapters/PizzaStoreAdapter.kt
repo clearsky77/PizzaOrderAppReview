@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.ImageView
+import android.widget.TextView
 import com.clearsky77.pizzaorderappreview.R
 import com.clearsky77.pizzaorderappreview.datas.StoreData
 
@@ -23,6 +25,13 @@ class PizzaStoreAdapter(
             tempRow = mInflater.inflate(R.layout.pizza_store_list_item, null) // 해당 xml을 인스턴스로 만들어준다.
         }
         val row = tempRow!! // !!는 널이 아니라는 뜻
+
+        val data = mList[position]
+        val logoImg = row.findViewById<ImageView>(R.id.logoImg) // ImageView라는 부분에, logoImg의 위치를 찾아와라.
+        val storeNameTxt = row.findViewById<TextView>(R.id.storeNameTxt)
+
+        storeNameTxt.text = data.name
+
         return row
     }
 }

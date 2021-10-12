@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.clearsky77.pizzaorderappreview.R
 import com.clearsky77.pizzaorderappreview.datas.StoreData
 
@@ -27,10 +28,12 @@ class PizzaStoreAdapter(
         val row = tempRow!! // !!는 널이 아니라는 뜻
 
         val data = mList[position]
-        val logoImg = row.findViewById<ImageView>(R.id.logoImg) // ImageView라는 부분에, logoImg의 위치를 찾아와라.
+        val logoImg = row.findViewById<ImageView>(R.id.logoImg) // 단지 xml에 위치 찾기. ImageView라는 부분에, logoImg의 위치를 찾아와라.
         val storeNameTxt = row.findViewById<TextView>(R.id.storeNameTxt)
 
         storeNameTxt.text = data.name
+
+        Glide.with(mContext).load(data.logoURL).into(logoImg)
 
         return row
     }

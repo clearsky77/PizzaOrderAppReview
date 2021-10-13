@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.clearsky77.pizzaorderappreview.R
+import com.clearsky77.pizzaorderappreview.ViewStoreDetailActivity
 import com.clearsky77.pizzaorderappreview.adapters.PizzaStoreAdapter
 import com.clearsky77.pizzaorderappreview.datas.StoreData
 import kotlinx.android.synthetic.main.fragment_pizza_store_list.*
@@ -37,7 +38,8 @@ class PizzaStoreListFragment : Fragment() {
 
         pizzaStoreListView.setOnItemClickListener { adapterView, view, position, l ->
             val clickedStore = mPizzaStoreList[position]
-//            val myIntent = Intent(requireContext(), )
+            val myIntent = Intent(requireContext(), ViewStoreDetailActivity::class.java)
+            myIntent.putExtra("store", clickedStore) //getExtra가 가능 하게 하기 -> StoreData클래스를 Serializable 상속받게
         }
 
 

@@ -1,10 +1,13 @@
 package com.clearsky77.pizzaorderappreview.fragments
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.clearsky77.pizzaorderappreview.EditNicknameActivity
 import com.clearsky77.pizzaorderappreview.R
@@ -29,6 +32,16 @@ class MyProfileFragment : Fragment() {
             val myIntent = Intent(requireContext(), EditNicknameActivity::class.java) //여기가 화면이 아니기 때문에 requireContext() 한다
             startActivityForResult(myIntent, REQ_FOR_NICKNAME) // 닉네임 받으러간다는 숫자값 넣어야함.
         }
+    }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+                        // (보냈던 REQ_FOR_NICKNAME, OK 누른 것 맞는가, 받아오는 인텐트)
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == REQ_FOR_NICKNAME){
+            if(resultCode == Activity.RESULT_OK){
+                val newNick = data!!.getStringExtra("nickname") // null일리 업기때문에 !!로 처리
+                nicknameTxt.text = newNick
+            }
+        }
     }
 }

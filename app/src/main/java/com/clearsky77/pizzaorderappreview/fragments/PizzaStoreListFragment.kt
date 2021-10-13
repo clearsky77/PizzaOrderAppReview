@@ -40,6 +40,7 @@ class PizzaStoreListFragment : Fragment() {
             val clickedStore = mPizzaStoreList[position]
             val myIntent = Intent(requireContext(), ViewStoreDetailActivity::class.java)
             myIntent.putExtra("store", clickedStore) //getExtra가 가능 하게 하기 -> StoreData클래스를 Serializable 상속받게
+            startActivity(myIntent)
         }
 
 

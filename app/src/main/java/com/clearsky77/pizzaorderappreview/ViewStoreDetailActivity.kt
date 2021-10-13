@@ -1,6 +1,8 @@
 package com.clearsky77.pizzaorderappreview
 
 import android.Manifest
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
@@ -28,6 +30,9 @@ class ViewStoreDetailActivity : AppCompatActivity() {
             //val permissionlistener: PermissionListener = object : PermissionListener {
             val pl = object : PermissionListener{
                 override fun onPermissionGranted() {
+                    val myUri = Uri.parse("tel:${storeData.phoneNum}")
+                    val myIntent = Intent(Intent.ACTION_CALL, myUri)
+                    startActivity(myIntent)
                 }
                 override fun onPermissionDenied(deniedPermissions: MutableList<String>?) {
                     Toast.makeText(this@ViewStoreDetailActivity, "통화 권한이 거절되었습니다.", Toast.LENGTH_SHORT).show()
